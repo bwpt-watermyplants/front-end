@@ -1,3 +1,5 @@
+`git pull origin main` EACH TIME BEFORE YOU START CODING
+
 WHEN U INSTALL STUFF USE YARN,
 Instead of doing `npm install xyz`, do `yarn add xyz`
 
