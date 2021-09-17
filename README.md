@@ -1,6 +1,8 @@
 `git pull origin main` EACH TIME BEFORE YOU START CODING
 
 WHEN U INSTALL STUFF USE YARN,
+`npm install` === `yarn`
+`npm uninstall` === `yarn remove`
 Instead of doing `npm install xyz`, do `yarn add xyz`
 
 Workflow:
