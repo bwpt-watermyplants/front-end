@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
+      {/* Shariq was here */}
       <p>I am the home component</p>
     </div>
   );
