@@ -1,6 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const initialFormValues = {
+  nickname: '',
+  species: '',
+  h20Frequency: NaN,
+  image: '',
+};
 
 export default function AddPlant(props) {
+  const [formValues, setFormValues] = useState(initialFormValues);
+
+  const onChange = (e) => {
+    console.log('I do be changing');
+    setFormValues({ ...formValues, [e.target.value]: e.target.name });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log('I do be submitting');
+  };
+
   return (
     <div className='flex min-h-screen bg-white'>
       <div className='flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24'>
