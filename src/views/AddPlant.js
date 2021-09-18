@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const initialFormValues = {
   nickname: '',
   species: '',
-  h20Frequency: NaN,
+  h20Frequency: '',
   image: '',
 };
 
@@ -11,8 +11,7 @@ export default function AddPlant(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const onChange = (e) => {
-    console.log('I do be changing');
-    setFormValues({ ...formValues, [e.target.value]: e.target.name });
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
@@ -24,28 +23,64 @@ export default function AddPlant(props) {
     <div className='flex min-h-screen bg-white'>
       <div className='flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24'>
         <div className='w-full max-w-sm mx-auto lg:w-96'>
-          <h2 className='mt-8 text-4xl font-extrabold text-center text-gray-900'>
+          <h2 className='my-8 text-4xl font-extrabold text-center text-gray-900'>
             Add A New Plant!
           </h2>
 
-          <form className='space-y-6'>
+          <form onSubmit={onSubmit} className='space-y-6'>
+            {/* nickname */}
             <label className='block text-sm font-medium text-gray-700'>
-              Email address
+              Nickname
               <input
-                id='email'
-                name='email'
-                type='email'
-                autoComplete='email'
+                id='nickname'
+                name='nickname'
+                value={formValues.nickname}
+                onChange={onChange}
                 required
                 className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
               />
             </label>
 
-            <div className='flex items-center justify-between'>
-              <h2 className='font-medium text-indigo-600 hover:text-indigo-500'>
-                Cancel
-              </h2>
-            </div>
+            {/* species */}
+            <label className='block text-sm font-medium text-gray-700'>
+              Species
+              <input
+                id='species'
+                name='species'
+                value={formValues.species}
+                onChange={onChange}
+                required
+                className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              />
+            </label>
+
+            {/* h20 frequency */}
+            <label className='block text-sm font-medium text-gray-700'>
+              H20 Frequency
+              <input
+                id='h20Frequency'
+                name='h20Frequency'
+                placeholder='hours'
+                value={formValues.h20Frequency}
+                onChange={onChange}
+                required
+                className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              />
+            </label>
+
+            {/* image */}
+            <label className='block text-sm font-medium text-gray-700'>
+              Image
+              <input
+                id='image'
+                name='image'
+                placeholder='image address'
+                value={formValues.image}
+                onChange={onChange}
+                required
+                className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              />
+            </label>
 
             <button
               type='submit'
@@ -54,6 +89,12 @@ export default function AddPlant(props) {
               Sign in
             </button>
           </form>
+
+          <div className='flex justify-between h-fullitems-center'>
+            <button className='w-full h-full mt-5 font-medium text-center text-indigo-600 border-solid hover:text-indigo-500 border-white-500'>
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
       <div className='relative flex-1 hidden w-0 lg:block'>
