@@ -13,14 +13,13 @@ function App() {
   return (
     <div className='App'>
       <Switch>
-        <Route path='/add-plant'>
-          <Navbar />
-          <AddPlant />
-        </Route>
-
         <Route path='/update-profile'>
           <Navbar />
           <UpdateUser />
+        </Route>
+
+        <Route path='/add-plant'>
+          <AddPlant />
         </Route>
 
         <Route path='/about'>
