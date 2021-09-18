@@ -1,7 +1,7 @@
 const initialState = {
-  username: '',
+  username: 'Shariq the handosme',
   phoneNumber: 1234567890,
-  password: '',
+  password: 'pizza pie',
 };
 
 export const userReducer = (state = initialState, action) => {
