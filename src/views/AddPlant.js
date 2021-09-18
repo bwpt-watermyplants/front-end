@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const initialFormValues = {
   nickname: '',
@@ -70,14 +71,13 @@ export default function AddPlant(props) {
 
             {/* image */}
             <label className='block text-sm font-medium text-gray-700'>
-              Image
+              Image (optional)
               <input
                 id='image'
                 name='image'
                 placeholder='image address'
                 value={formValues.image}
                 onChange={onChange}
-                required
                 className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
               />
             </label>
@@ -91,9 +91,12 @@ export default function AddPlant(props) {
           </form>
 
           <div className='flex justify-between h-fullitems-center'>
-            <button className='w-full h-full mt-5 font-medium text-center text-indigo-600 border-solid hover:text-indigo-500 border-white-500'>
+            <Link
+              to='/home'
+              className='w-full h-full mt-5 font-medium text-center text-indigo-600 border-solid hover:text-indigo-500 border-white-500'
+            >
               Cancel
-            </button>
+            </Link>
           </div>
         </div>
       </div>
