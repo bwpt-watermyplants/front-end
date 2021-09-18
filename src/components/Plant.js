@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { RefreshIcon, SunIcon, TrashIcon } from '@heroicons/react/solid'; // https://react-icons.github.io/react-icons/icons?name=fc
+import { Link } from 'react-router-dom';
 
 const Plant = (props) => {
   const { plant } = props;
@@ -34,8 +35,8 @@ const Plant = (props) => {
       <div>
         <div className='flex -mt-px divide-x divide-gray-200'>
           <div className='flex flex-1 w-0'>
-            <a
-              href={`mailto:${plant.email}`}
+            <Link
+              to='#'
               className='relative inline-flex items-center justify-center flex-1 w-0 py-4 -mr-px text-sm font-medium text-gray-700 border border-transparent rounded-bl-lg hover:text-gray-500'
             >
               <RefreshIcon
@@ -43,27 +44,27 @@ const Plant = (props) => {
                 aria-hidden='true'
               />
               <span className='ml-3'>Update</span>
-            </a>
+            </Link>
           </div>
 
           <div className='flex flex-1 w-0 -ml-px'>
-            <a
-              href={`tel:${plant.telephone}`}
+            <Link
+              to='#'
               className='relative inline-flex items-center justify-center flex-1 w-0 py-4 text-sm font-medium text-gray-700 border border-transparent rounded-br-lg hover:text-gray-500'
             >
               <SunIcon className='w-5 h-5 text-gray-400' aria-hidden='true' />
               <span className='ml-3'>Water</span>
-            </a>
+            </Link>
           </div>
 
           <div className='flex flex-1 w-0 -ml-px'>
-            <a
-              href={`tel:${plant.telephone}`}
+            <Link
+              to='#'
               className='relative inline-flex items-center justify-center flex-1 w-0 py-4 text-sm font-medium text-gray-700 border border-transparent rounded-br-lg hover:text-gray-500'
             >
               <TrashIcon className='w-5 h-5 text-gray-400' aria-hidden='true' />
               <span className='ml-3'>Delete</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
