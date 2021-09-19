@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { nanoid } from 'nanoid';
+
+const initialFormValues = {
+  id: nanoid(),
+  nickname: '',
+  species: '',
+  h20Frequency: '',
+  image: '',
+};
 
 const AddPlant = (props) => {
-  const initialFormValues = {
-    id: props.id,
-    nickname: '',
-    species: '',
-    h20Frequency: '',
-    image: '',
-  };
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const onChange = (e) => {
