@@ -11,7 +11,7 @@ import AboutUs from './views/AboutUs';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='bg-gray-200'>
       <Switch>
         <Route path='/add-plant'>
           <Navbar />
