@@ -4,14 +4,28 @@ const initialState = [
     nickname: 'the snack',
     species: 'handsome',
     h2oFrequency: '2 days',
-    image: 'optional',
+    image: '',
   },
   {
     id: 1,
     nickname: 'the snack',
     species: 'handsome',
     h2oFrequency: '2 days',
-    image: 'optional',
+    image: '',
+  },
+  {
+    id: 2,
+    nickname: 'the snack',
+    species: 'handsome',
+    h2oFrequency: '2 days',
+    image: '',
+  },
+  {
+    id: 3,
+    nickname: 'the snack',
+    species: 'handsome',
+    h2oFrequency: '2 days',
+    image: '',
   },
 ];
 
