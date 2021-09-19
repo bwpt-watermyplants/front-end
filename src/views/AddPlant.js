@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const initialFormValues = {
-  nickname: '',
-  species: '',
-  h20Frequency: '',
-  image: '',
-};
-
-export default function AddPlant(props) {
+const AddPlant = (props) => {
+  const initialFormValues = {
+    id: props.id,
+    nickname: '',
+    species: '',
+    h20Frequency: '',
+    image: '',
+  };
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const onChange = (e) => {
@@ -17,6 +18,7 @@ export default function AddPlant(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setFormValues(initialFormValues);
     console.log('I do be submitting');
   };
 
@@ -110,4 +112,12 @@ export default function AddPlant(props) {
       </div>
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    id: state.plants.length,
+  };
+};
+
+export default connect(mapStateToProps, {})(AddPlant);
