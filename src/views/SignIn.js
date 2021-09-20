@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
 
     axiosWithAuth()
-      .post('/api/login', formValues)
+      .post('/login', formValues)
       .then((res) => {
         console.log("Axios Login Post", res)
         localStorage.setItem('token', res.data.payload)
