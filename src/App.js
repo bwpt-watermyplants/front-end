@@ -37,7 +37,8 @@ function App() {
         </Route>
 
         <Route path='/'>
-          <SignIn />
+          {/* <SignIn /> */}
+          <SignUp />
         </Route>
       </Switch>
     </div>
