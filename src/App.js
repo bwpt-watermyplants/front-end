@@ -41,10 +41,6 @@ function App() {
           <Home />
         </Route>
 
-        <Route path='sign-up'>
-          <SignUp />
-        </Route>
-
         <Route path='/'>
           <Auth />
         </Route>
