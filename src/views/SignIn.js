@@ -68,7 +68,7 @@ const Login = () => {
         </form>
       </div>
 
-      <p id="error" className="error">{error}</p>
+      <p id="error" className="error"></p>
     </div>
   );
 };
