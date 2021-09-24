@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router';
 
 import { addUser } from '../actions';
 
@@ -11,14 +12,16 @@ const initialFormValues = {
 
 const SignUpForm = (props) => {
   const [formValues, setFormValues] = useState(initialFormValues);
+  const { push } = useHistory();
 
   const onChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    props.addUser(formValues);
+    await props.addUser(formValues);
+    push('/home');
   };
 
   return (
