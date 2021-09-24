@@ -1,5 +1,7 @@
-import { connect } from 'react-redux';
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import { addUser } from '../actions';
 
 const initialFormValues = {
   username: '',
@@ -7,7 +9,7 @@ const initialFormValues = {
   number: '',
 };
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const onChange = (e) => {
@@ -16,10 +18,11 @@ const SignUpForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    props.addUser(formValues);
   };
 
   return (
-    <form onSubmit={onSubmit} className='space-y-6' action='#' method='POST'>
+    <form onSubmit={onSubmit} className='space-y-6'>
       <div>
         <label
           htmlFor='username'
@@ -96,8 +99,7 @@ const SignUpForm = () => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  return { state };
+  return null;
 };
 
-export default connect(mapStateToProps, {})(SignUpForm);
+export default connect(mapStateToProps, { addUser })(SignUpForm);
