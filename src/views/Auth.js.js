@@ -6,22 +6,6 @@ import SignInForm from '../components/SignInForm';
 
 const Auth = () => {
   const [isNewUser, setIsNewUser] = useState(true);
-  const { push } = useHistory();
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-
-  //   axiosWithAuth()
-  //     .post('/login', formValues)
-  //     .then((res) => {
-  //       console.log('Axios Login Post', res);
-  //       localStorage.setItem('token', res.data.payload);
-  //       push('/Home');
-  //     })
-  //     .catch((err) => {
-  //       console.log({ err });
-  //     });
-  // };
 
   return (
     <>

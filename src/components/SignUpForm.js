@@ -1,22 +1,41 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import React, { useState } from 'react';
 
-export default function SignUpForm() {
+const initialFormValues = {
+  username: '',
+  password: '',
+  number: '',
+};
+
+const SignUpForm = () => {
+  const [formValues, setFormValues] = useState(initialFormValues);
+
+  const onChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className='space-y-6' action='#' method='POST'>
+    <form onSubmit={onSubmit} className='space-y-6' action='#' method='POST'>
       <div>
         <label
-          htmlFor='email'
+          htmlFor='username'
           className='block text-sm font-medium text-gray-700'
         >
-          Email address
+          Username
         </label>
         <div className='mt-1'>
           <input
-            id='email'
-            name='email'
-            type='email'
-            autoComplete='email'
+            id='username'
+            value={formValues.username}
+            name='username'
+            type='username'
+            autoComplete='username'
             required
+            onChange={onChange}
             className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
           />
         </div>
@@ -32,10 +51,33 @@ export default function SignUpForm() {
         <div className='mt-1'>
           <input
             id='password'
+            value={formValues.password}
             name='password'
             type='password'
             autoComplete='current-password'
             required
+            onChange={onChange}
+            className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          htmlFor='number'
+          className='block text-sm font-medium text-gray-700'
+        >
+          Number
+        </label>
+        <div className='mt-1'>
+          <input
+            id='number'
+            value={formValues.number}
+            name='number'
+            type='tel'
+            placeholder='123-456-7890'
+            required
+            onChange={onChange}
             className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
           />
         </div>
@@ -51,4 +93,11 @@ export default function SignUpForm() {
       </div>
     </form>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { state };
+};
+
+export default connect(mapStateToProps, {})(SignUpForm);

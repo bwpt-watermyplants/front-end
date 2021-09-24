@@ -6,6 +6,8 @@ import {
   SET_ERROR,
   DELETE_PLANT,
   EDIT_PLANT,
+  LOGGED_IN_USER,
+  LOGGED_OUT_USER,
 } from '../actions';
 
 export const initialState = {
@@ -21,6 +23,17 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOGGED_IN_USER:
+      return { ...state, user: { ...state.user, ...action.payload } };
+    case LOGGED_OUT_USER:
+      return {
+        ...state,
+        user: {
+          username: '',
+          phoneNumber: '',
+          plants: [],
+        },
+      };
     case ADD_PLANT:
       return {
         ...state,

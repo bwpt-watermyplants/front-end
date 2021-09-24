@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useParams } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 //THUNKY FUN
 export const ADD_PLANT = 'ADD_PLANT';
 export const SET_ERROR = 'SET_ERROR';
@@ -63,4 +64,44 @@ export const editPlant = () => (dispatch) => {
 };
 export const deletePlant = (plantId) => (dispatch) => {
   dispatch({ type: DELETE_PLANT, payload: plantId });
+};
+
+export const LOGGED_IN_USER = 'LOGGED_IN_USER';
+export const LOGGED_OUT_USER = 'LOGGED_OUT_USER';
+
+export const loginUser = (userValues) => (dispatch) => {
+  axios
+    .post('/login', userValues)
+    .then((res) => {
+      localStorage.setItem('token', res.data.payload);
+      dispatch({ type: LOGGED_IN_USER, payload: userValues });
+    })
+    .catch((err) => {
+      console.log('loggin in user faileed');
+      console.log(err);
+    });
+};
+
+export const addUser = (registerFormValues) => (dispatch) => {
+  axios
+    .post('/register', registerFormValues)
+    .then((res) => {
+      dispatch(loginUser(res.data));
+    })
+    .catch((err) => {
+      console.log('adding user failed');
+      console.log(err);
+    });
+};
+
+export const logoutUser = () => (dispatch) => {
+  axiosWithAuth()
+    .get('logout')
+    .then((res) => {
+      dispatch({ type: LOGGED_OUT_USER });
+    })
+    .catch((err) => {
+      console.log('error logging out user');
+      console.log(err);
+    });
 };
