@@ -96,8 +96,9 @@ export const addUser = (registerFormValues) => (dispatch) => {
 
 export const logoutUser = () => (dispatch) => {
   axiosWithAuth()
-    .get('logout')
+    .get('/logout')
     .then((res) => {
+      localStorage.removeItem('token');
       dispatch({ type: LOGGED_OUT_USER });
     })
     .catch((err) => {
