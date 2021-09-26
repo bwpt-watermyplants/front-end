@@ -17,7 +17,7 @@ const Home = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    plants: state.plants,
+    plants: state.user.plants,
   };
 };
 
