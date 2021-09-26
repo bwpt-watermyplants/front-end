@@ -8,7 +8,7 @@ export const SET_ERROR = 'SET_ERROR';
 export const FETCH_PLANTS_START = 'FETCH_PLANTS_START';
 export const FETCH_PLANTS_SUCCESS = 'FETCH_PLANTS_SUCCESS';
 export const FETCH_PLANTS_FAILURE = 'FETCH_PLANTS_FAILURE';
-export const DELETE_PLANT = 'DELETE_PLANT';
+// export const DELETE_PLANT = 'DELETE_PLANT';
 export const ADD_USER = 'ADD_USER';
 export const EDIT_PLANT = 'EDIT_PLANT';
 //...add a new plant into our object
@@ -42,13 +42,7 @@ export const fetchPlants = () => (dispatch) => {
       dispatch({ type: FETCH_PLANTS_FAILURE, payload: err });
     });
 };
-// export const deletePlant = (plantId) => (dispatch) => {
-//     axios.delete(`https://water-my-plants-build.herokuapp.com/plants/${plantId}`)
-//         .then( res => {
-//             dispatch({type: DELETE_PLANT})
-//         })
-//         .catch(err => console.log(err))
-// }
+
 export const editPlant = () => (dispatch) => {
   dispatch({ type: EDIT_PLANT });
   const { id } = useParams();
@@ -62,12 +56,10 @@ export const editPlant = () => (dispatch) => {
       console.log('error: ', err);
     });
 };
-export const deletePlant = (plantId) => (dispatch) => {
-  dispatch({ type: DELETE_PLANT, payload: plantId });
-};
 
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
 export const LOGGED_OUT_USER = 'LOGGED_OUT_USER';
+export const DELETE_PLANT = 'DELETE_PLANT';
 
 export const loginUser = (userValues) => (dispatch) => {
   axios
@@ -105,4 +97,11 @@ export const logoutUser = () => (dispatch) => {
       console.log('error logging out user');
       console.log(err);
     });
+};
+
+export const deletePlant = (id) => (dispatch) => {
+  axiosWithAuth()
+    .delete(`plants/${id}`)
+    .then((res) => dispatch({ type: DELETE_PLANT, payload: id }))
+    .catch((err) => dispatch({ type: DELETE_PLANT, payload: id }));
 };
