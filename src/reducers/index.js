@@ -8,6 +8,7 @@ import {
   EDIT_PLANT,
   LOGGED_IN_USER,
   LOGGED_OUT_USER,
+  WATER_PLANT,
 } from '../actions';
 
 export const initialState = {
@@ -23,7 +24,7 @@ export const initialState = {
         id: '213',
         species: 'plant',
         h2oFrequency: '1.5 day(s)',
-        currentFreq: '75 day(s)',
+        currentFreq: '0.75 day(s)',
       },
     ],
   },
@@ -43,7 +44,6 @@ const reducer = (state = initialState, action) => {
         },
       };
     case DELETE_PLANT:
-      console.log(state.user.plants);
       return {
         ...state,
         user: {
@@ -53,35 +53,24 @@ const reducer = (state = initialState, action) => {
           ),
         },
       };
-    // case ADD_PLANT:
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       plants: [...state.user.plants, action.payload],
-    //     },
-    //   };
-    // case SET_ERROR:
-    //   return { ...state, errorMsg: action.payload };
-    // case FETCH_PLANTS_START:
-    //   return { ...state, isLoading: true };
-    // case FETCH_PLANTS_SUCCESS:
-    //   return { ...state, isLoading: false, plants: action.payload };
-    // case FETCH_PLANTS_FAILURE:
-    //   return { ...state, isLoading: false, error: action.payload };
-    // case EDIT_PLANT:
-    //   return { ...state, isLoading: true, errorMsg: action.payload };
-    // case DELETE_PLANT:
-    //   const filteredPlant = state.user.plants.filter(
-    //     (plant) => plant.id !== action.payload
-    //   );
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       filteredPlant,
-    //     },
-    //   };
+    case WATER_PLANT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          plants: [
+            ...state.user.plants.map((plant) => {
+              if (plant.id === action.payload) {
+                return {
+                  ...plant,
+                  currentFreq: plant.h2oFrequency,
+                };
+              }
+              return plant;
+            }),
+          ],
+        },
+      };
     default:
       return state;
   }

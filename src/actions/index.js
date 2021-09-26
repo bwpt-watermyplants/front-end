@@ -60,6 +60,7 @@ export const editPlant = () => (dispatch) => {
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
 export const LOGGED_OUT_USER = 'LOGGED_OUT_USER';
 export const DELETE_PLANT = 'DELETE_PLANT';
+export const WATER_PLANT = 'WATER_PLANT';
 
 export const loginUser = (userValues) => (dispatch) => {
   axios
@@ -104,4 +105,8 @@ export const deletePlant = (id) => (dispatch) => {
     .delete(`plants/${id}`)
     .then((res) => dispatch({ type: DELETE_PLANT, payload: id }))
     .catch((err) => dispatch({ type: DELETE_PLANT, payload: id }));
+};
+
+export const waterPlant = (id) => {
+  return { type: WATER_PLANT, payload: id };
 };
