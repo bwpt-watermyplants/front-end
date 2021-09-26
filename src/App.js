@@ -17,7 +17,7 @@ import {
 
 function App() {
   return (
-    <div className='h-screen overflow-hidden bg-indigo-100'>
+    <div className='h-full bg-indigo-100'>
       <Switch>
         <Route path='/update-profile'>
           <Navbar />
