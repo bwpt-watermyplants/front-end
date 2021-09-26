@@ -6,8 +6,8 @@ const initialFormValues = {
 };
 
 const UpdateUser = (props) => {
-  const [updatePhone, setUpdatePhone] = useState(false);
-  const [updatePassword, setUpdatePassword] = useState(false);
+  const [updatePhone, setUpdatePhone] = useState(true);
+  const [updatePassword, setUpdatePassword] = useState(true);
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const onChange = (e) => {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Plants from '../components/Plants';
 
 //styled imports
-import { PlantsDiv } from './styled/home'
+import { PlantsDiv } from './styled/home';
 
 const Home = (props) => {
   return (
@@ -12,8 +12,6 @@ const Home = (props) => {
     <PlantsDiv className='m-10 md:mx-15 lg:mx-15 xl:mx-20'>
       <Plants plants={props.plants} />
     </PlantsDiv>
-
-    
   );
 };
 
