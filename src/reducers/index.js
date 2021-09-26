@@ -108,7 +108,6 @@ const reducer = (state = initialState, action) => {
           plants: [
             ...state.user.plants.map((plant) => {
               if (plant.id === action.payload) {
-                console.log(plant.h2oFrequency);
                 return {
                   ...plant,
                   currentFreq: `${plant.h2oFrequency} day(s)`,
