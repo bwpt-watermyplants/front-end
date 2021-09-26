@@ -24,13 +24,6 @@ export const initialState = {
         currentFreq: '0.42 day(s)',
       },
       {
-        nickname: 'Fiddle Leaf Fig',
-        id: '542543',
-        species: 'Ficus lyrata',
-        h2oFrequency: 0.86,
-        currentFreq: '0.78 day(s)',
-      },
-      {
         nickname: 'Rubber Plant',
         id: '456456',
         species: 'Ficus elastica',
