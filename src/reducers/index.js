@@ -1,14 +1,11 @@
 import {
   ADD_PLANT,
-  FETCH_PLANTS_START,
-  FETCH_PLANTS_SUCCESS,
-  FETCH_PLANTS_FAILURE,
-  SET_ERROR,
   DELETE_PLANT,
   EDIT_PLANT,
   LOGGED_IN_USER,
   LOGGED_OUT_USER,
   WATER_PLANT,
+  UPDATE_PLANT,
 } from '../actions';
 
 export const initialState = {
@@ -111,7 +108,6 @@ const reducer = (state = initialState, action) => {
           plants: [
             ...state.user.plants.map((plant) => {
               if (plant.id === action.payload) {
-                console.log(plant.h2oFrequency);
                 return {
                   ...plant,
                   currentFreq: `${plant.h2oFrequency} day(s)`,
@@ -120,6 +116,21 @@ const reducer = (state = initialState, action) => {
               return plant;
             }),
           ],
+        },
+      };
+    case UPDATE_PLANT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          plants: state.user.plants.map((plant, index) => {
+            if (plant.id === action.payload.id)
+              return {
+                ...action.payload.plantInfo,
+                currentFreq: state.user.plants[index].currentFreq,
+              };
+            return plant;
+          }),
         },
       };
     default:
