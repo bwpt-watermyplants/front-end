@@ -24,7 +24,6 @@ function App() {
         </Route>
 
         <Route path='/update-profile'>
-          <Navbar />
           <UpdateUser />
         </Route>
 

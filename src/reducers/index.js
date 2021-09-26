@@ -1,11 +1,11 @@
 import {
   ADD_PLANT,
   DELETE_PLANT,
-  EDIT_PLANT,
   LOGGED_IN_USER,
   LOGGED_OUT_USER,
   WATER_PLANT,
   UPDATE_PLANT,
+  UPDATE_USER,
 } from '../actions';
 
 export const initialState = {
@@ -73,6 +73,14 @@ const reducer = (state = initialState, action) => {
           username: '',
           phoneNumber: '',
           plants: [],
+        },
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
         },
       };
     case ADD_PLANT:
