@@ -64,9 +64,9 @@ const AddPlant = (props) => {
               />
             </label>
 
-            {/* h20 frequency */}
+            {/* h2o frequency */}
             <label className='block text-sm font-medium text-gray-700'>
-              H20 Frequency
+              H2O Frequency
               <input
                 id='h2oFrequency'
                 name='h2oFrequency'

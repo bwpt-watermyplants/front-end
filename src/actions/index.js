@@ -10,37 +10,37 @@ export const FETCH_PLANTS_FAILURE = 'FETCH_PLANTS_FAILURE';
 export const EDIT_PLANT = 'EDIT_PLANT';
 
 // Error Message
-export const setErrorMsg = (errorMsg) => {
-  return { type: SET_ERROR, payload: errorMsg };
-};
-//API fetch function
-export const fetchPlants = () => (dispatch) => {
-  dispatch({ type: FETCH_PLANTS_START });
-  //fetch the api here
-  axios
-    .get(``)
-    .then((res) => {
-      dispatch({ type: FETCH_PLANTS_SUCCESS, payload: res.data });
-    })
-    .catch((err) => {
-      console.log('error: ', err);
-      dispatch({ type: FETCH_PLANTS_FAILURE, payload: err });
-    });
-};
+// export const setErrorMsg = (errorMsg) => {
+//   return { type: SET_ERROR, payload: errorMsg };
+// };
+// //API fetch function
+// export const fetchPlants = () => (dispatch) => {
+//   dispatch({ type: FETCH_PLANTS_START });
+//   //fetch the api here
+//   axios
+//     .get(``)
+//     .then((res) => {
+//       dispatch({ type: FETCH_PLANTS_SUCCESS, payload: res.data });
+//     })
+//     .catch((err) => {
+//       console.log('error: ', err);
+//       dispatch({ type: FETCH_PLANTS_FAILURE, payload: err });
+//     });
+// };
 
-export const editPlant = () => (dispatch) => {
-  dispatch({ type: EDIT_PLANT });
-  const { id } = useParams();
-  axios
-    .put(``)
-    .then((res) => {
-      dispatch({ type: EDIT_PLANT });
-    })
-    .catch((err) => {
-      dispatch({ type: FETCH_PLANTS_FAILURE, payload: err });
-      console.log('error: ', err);
-    });
-};
+// export const editPlant = () => (dispatch) => {
+//   dispatch({ type: EDIT_PLANT });
+//   const { id } = useParams();
+//   axios
+//     .put(``)
+//     .then((res) => {
+//       dispatch({ type: EDIT_PLANT });
+//     })
+//     .catch((err) => {
+//       dispatch({ type: FETCH_PLANTS_FAILURE, payload: err });
+//       console.log('error: ', err);
+//     });
+// };
 
 export const ADD_USER = 'ADD_USER';
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
@@ -49,6 +49,7 @@ export const LOGGED_OUT_USER = 'LOGGED_OUT_USER';
 export const ADD_PLANT = 'ADD_PLANT';
 export const DELETE_PLANT = 'DELETE_PLANT';
 export const WATER_PLANT = 'WATER_PLANT';
+export const UPDATE_PLANT = 'UPDATE_PLANT';
 
 export const loginUser = (userValues) => (dispatch) => {
   axios
@@ -101,4 +102,16 @@ export const deletePlant = (id) => (dispatch) => {
 
 export const waterPlant = (id) => {
   return { type: WATER_PLANT, payload: id };
+};
+
+export const updatePlant = (plantInfo, id) => (dispatch) => {
+  axiosWithAuth()
+    .put(`/plants/${id}`, plantInfo)
+    .then((res) => {
+      dispatch({ type: UPDATE_PLANT, payload: { plantInfo, id } });
+    })
+    .catch((err) => {
+      dispatch({ type: UPDATE_PLANT, payload: { plantInfo, id } });
+      console.log(err);
+    });
 };
