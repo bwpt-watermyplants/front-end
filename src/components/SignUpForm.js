@@ -102,7 +102,7 @@ const SignUpForm = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return null;
+  return {};
 };
 
 export default connect(mapStateToProps, { addUser })(SignUpForm);

@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+import { useHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { addPlant } from '../actions';
 
 const initialFormValues = {
   nickname: '',
   species: '',
-  h20Frequency: '',
+  h2oFrequency: '',
+  currentFreq: '0.75 day(s)',
   image: '',
+  id: nanoid(),
 };
 
-export default function AddPlant(props) {
+const AddPlant = (props) => {
+  const { addPlant } = props;
   const [formValues, setFormValues] = useState(initialFormValues);
-
+  const { push } = useHistory();
   const onChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('I do be submitting');
+    addPlant(formValues);
+    setFormValues(initialFormValues);
+    push('/home');
   };
 
   return (
@@ -59,10 +68,10 @@ export default function AddPlant(props) {
             <label className='block text-sm font-medium text-gray-700'>
               H20 Frequency
               <input
-                id='h20Frequency'
-                name='h20Frequency'
-                placeholder='hours'
-                value={formValues.h20Frequency}
+                id='h2oFrequency'
+                name='h2oFrequency'
+                placeholder='days'
+                value={formValues.h2oFrequency}
                 onChange={onChange}
                 required
                 className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
@@ -70,7 +79,7 @@ export default function AddPlant(props) {
             </label>
 
             {/* image */}
-            <label className='block text-sm font-medium text-gray-700'>
+            {/* <label className='block text-sm font-medium text-gray-700'>
               Image (optional)
               <input
                 id='image'
@@ -80,13 +89,13 @@ export default function AddPlant(props) {
                 onChange={onChange}
                 className='block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
               />
-            </label>
+            </label> */}
 
             <button
               type='submit'
               className='flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
             >
-              Sign in
+              Add Plant
             </button>
           </form>
 
@@ -110,4 +119,9 @@ export default function AddPlant(props) {
       </div>
     </div>
   );
-}
+};
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, { addPlant })(AddPlant);

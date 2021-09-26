@@ -24,7 +24,7 @@ const Plants = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return null;
+  return {};
 };
 
 export default connect(mapStateToProps, { deletePlant, waterPlant })(Plants);

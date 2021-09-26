@@ -23,7 +23,7 @@ export const initialState = {
         nickname: 'i am plant',
         id: '213',
         species: 'plant',
-        h2oFrequency: '1.5 day(s)',
+        h2oFrequency: 1.5,
         currentFreq: '0.75 day(s)',
       },
     ],
@@ -41,6 +41,14 @@ const reducer = (state = initialState, action) => {
           username: '',
           phoneNumber: '',
           plants: [],
+        },
+      };
+    case ADD_PLANT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          plants: [...state.user.plants, action.payload],
         },
       };
     case DELETE_PLANT:
@@ -61,9 +69,10 @@ const reducer = (state = initialState, action) => {
           plants: [
             ...state.user.plants.map((plant) => {
               if (plant.id === action.payload) {
+                console.log(plant.h2oFrequency);
                 return {
                   ...plant,
-                  currentFreq: plant.h2oFrequency,
+                  currentFreq: `${plant.h2oFrequency} day(s)`,
                 };
               }
               return plant;

@@ -78,7 +78,7 @@ const SignInForm = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return null;
+  return {};
 };
 
 export default connect(mapStateToProps, { loginUser })(SignInForm);
