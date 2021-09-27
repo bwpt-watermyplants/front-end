@@ -50,7 +50,7 @@ const SignUp = () => {
   const [post, setPost] = useState([]);
 
   return (
-    <>
+    <div>
       <h3> Sign Up Form</h3>
       <form id='sign-up-form' onSubmit={submitHandler}>
         <label htmlFor='firstName'>
@@ -97,7 +97,7 @@ const SignUp = () => {
           Submit
         </button>
       </form>
-    </>
+    </div>
   );
 };
 export default SignUp;
